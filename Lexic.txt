@@ -1,0 +1,29 @@
+Alphabet:
+	a. Upper (A-Z) and lower case letters (a-z) of the English alphabet
+	b. Underline character '_';
+	c. Decimal digits (0-9);
+	
+Lexic:
+	a.Special symbols, representing:
+		- operators + - * / // % = < > <= == >=
+		- separators () { } ; space
+		- reserved words: char int const else if for elif read write stop until bool
+	b.identifiers
+		-a sequence of letters and digits, such that the first character is a letter; the rule is:
+		<identifier> ::= <seq_letters> | <seq_letters><seq_digits>
+		<letter> ::= A | B | ...| Z | a | b | ... | z
+		<seq_letters> ::= <letter> | <letter><seq_letters>
+		<digit> ::= 0 | 1 |...| 9
+		<seq_digits> ::= <digit> | <digit><seq_digits>
+	c.constants
+		1.integer:
+		  <integer_const> ::= 0 | <non_zero_nr> | +<non_zero_nr> | -<non_zero_nr>
+		  <non_zero_nr>::=<non_zero_digit> | <non_zero_digit><seq_digits>
+		  <non_zero_digit>::= 1 | 2| ...| 9
+		2.character
+		  <character_const> ::= ' <character> '
+		  <character> ::= <letter> | <digit>
+		3.string 
+		  <string_const> ::= "<string>"
+		  <string> ::=  | <char> | <char><string>
+		  <char> ::= <letter> | <digit>
