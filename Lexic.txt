@@ -7,7 +7,7 @@ Lexic:
 	a.Special symbols, representing:
 		- operators + - * / // % = < > <= == >=
 		- separators () { } ; space
-		- reserved words: char int const else if for elif read write stop until bool
+		- reserved words: char int bool else if else for while read write stop
 	b.identifiers
 		-a sequence of letters and digits, such that the first character is a letter; the rule is:
 		<identifier> ::= <seq_letters> | <seq_letters><seq_digits>
@@ -22,8 +22,10 @@ Lexic:
 		  <non_zero_digit>::= 1 | 2| ...| 9
 		2.character
 		  <character_const> ::= ' <character> '
-		  <character> ::= <letter> | <digit>
+		  <character> ::= <letter> | <digit> | , | . | # | ? | ! | $
 		3.string 
 		  <string_const> ::= "<string>"
 		  <string> ::=  | <char> | <char><string>
-		  <char> ::= <letter> | <digit>
+		  <char> ::= <letter> | <digit> | , | . | # | ? | ! | $
+		4.boolean
+		  <boolean> ::= True | False
