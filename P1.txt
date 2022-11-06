@@ -1,0 +1,14 @@
+{
+	int x;
+	int i;
+	read(x);
+	for (i = 2; i <= x // 2; i ++)
+	{
+		if (x % i == 0)
+		{
+			write("NonPrime");
+			stop;
+		}
+	}
+	write("Prime");
+}

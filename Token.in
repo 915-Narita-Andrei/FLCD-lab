@@ -9,7 +9,13 @@ operators:
 <
 <=
 ==
+!=
 >=
+>
+++
+--
+&&
+||
 
 
 separators:
@@ -18,7 +24,7 @@ separators:
 {
 }
 ;
-space
+ 
 
 reserved words:
 char

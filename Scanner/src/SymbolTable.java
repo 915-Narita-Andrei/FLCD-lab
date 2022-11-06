@@ -5,10 +5,21 @@ public class SymbolTable {
     HashTable hashTable;
 
     public SymbolTable(){
-        this.hashTable = new HashTable(97);
+        this.hashTable = new HashTable(1009);
     }
 
-    public List<Integer> getPos(String val){
+    public Pair<Integer, Integer> add(String val){
         return this.hashTable.add(val);
+    }
+
+    public HashTable getHashTable() {
+        return hashTable;
+    }
+
+    @Override
+    public String toString() {
+        return "SymbolTable{" +
+                "hashTable=" + hashTable +
+                '}';
     }
 }

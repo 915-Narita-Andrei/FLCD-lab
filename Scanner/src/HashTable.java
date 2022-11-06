@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
 public class HashTable {
 
     private List<List<String>> elems;
@@ -30,12 +29,24 @@ public class HashTable {
         return 0;
     }
 
-    public List<Integer> add(String val){
+    public Pair<Integer, Integer> add(String val){
         int hashValue = this.hash(val);
         if(this.elems.get(hashValue).contains(val)){
-            return List.of(hashValue, this.getVal(hashValue, val));
+            return new Pair<>(hashValue, this.getVal(hashValue, val));
         }
         this.elems.get(hashValue).add(val);
-        return List.of(hashValue, this.elems.get(hashValue).size()-1);
+        return new Pair<>(hashValue, this.elems.get(hashValue).size()-1);
+    }
+
+    public List<List<String>> getElems() {
+        return elems;
+    }
+
+    @Override
+    public String toString() {
+        return "HashTable{" +
+                "elems=" + elems +
+                ", size=" + size +
+                '}';
     }
 }
