@@ -11,6 +11,7 @@ public class MyScanner {
     List<String> separators;
     String separatorsString;
     List<String> reservedWords;
+    String errors = "";
 
     public MyScanner(){
         identifiersST = new SymbolTable();
@@ -104,6 +105,7 @@ public class MyScanner {
                     pif.add(token, pifValue);
                 }
                 else {
+                    errors += "Lexical error on line " + lineNumber + " on " + token;
                     System.out.println("Lexical error on line " + lineNumber + " on " + token);
                     return;
                 }
@@ -123,6 +125,7 @@ public class MyScanner {
                         pifValue = constantsST.add(token);
                         pif.add(token, pifValue);
                     } else {
+                        errors += "Lexical error on line " + lineNumber + " on " + token;
                         System.out.println("Lexical error on line " + lineNumber + " on " + token);
                         return;
                     }
@@ -140,6 +143,7 @@ public class MyScanner {
                     pifValue = identifiersST.add(token);
                     pif.add(token, pifValue);
                 } else {
+                    errors += "Lexical error on line " + lineNumber + " on " + token;
                     System.out.println("Lexical error on line " + lineNumber + " on " + token);
                     return;
                 }
@@ -164,11 +168,12 @@ public class MyScanner {
                 else {
                     if (isConstant(token)) {
                         pifValue = constantsST.add(token);
-                        pif.add(token, pifValue);
+                        pif.add("constant", pifValue);
                     } else if (isIdentifier(token)) {
                         pifValue = identifiersST.add(token);
-                        pif.add(token, pifValue);
+                        pif.add("identifier", pifValue);
                     } else {
+                        errors += "Syntax error: unidentified token [" + token + "] on line " + lineNumber + "\n";
                         System.out.println("Syntax error: unidentified token [" + token + "] on line " + lineNumber);
                     }
                 }
@@ -252,7 +257,7 @@ public class MyScanner {
 
     @Override
     public String toString() {
-        String s = "Identifiers Symbol Table:\n";
+        String s = errors + "\nIdentifiers Symbol Table:\n";
         var iST = identifiersST.getHashTable().getElems();
         for(int i=0; i<iST.size(); i++){
             if(iST.get(i).size() > 0){
