@@ -24,7 +24,7 @@ public class MyScanner {
     }
 
     public void init(){
-        readTokens("D:\\Stuff\\faculta\\anu3-sem1\\FLCD\\lab\\project\\FLCD-lab\\Token.in");
+        readTokens("D:\\Stuff\\faculta\\anu3-sem1\\FLCD\\lab\\project\\FLCD-lab\\scannerData\\Token.in");
         separatorsString = "";
         separators.forEach(separator -> {
             separatorsString+=separator;
@@ -174,7 +174,7 @@ public class MyScanner {
                         pif.add("identifier", pifValue);
                     } else {
                         errors += "Syntax error: unidentified token [" + token + "] on line " + lineNumber + "\n";
-                        System.out.println("Syntax error: unidentified token [" + token + "] on line " + lineNumber);
+                        //System.out.println("Syntax error: unidentified token [" + token + "] on line " + lineNumber);
                     }
                 }
             }
@@ -248,11 +248,15 @@ public class MyScanner {
     }
 
     private boolean isIdentifier(String token){
-        return token.matches("^[a-zA-Z]([a-zA-Z]|[0-9])*$");
+        FiniteAutomata finiteAutomata = new FiniteAutomata("D:\\Stuff\\faculta\\anu3-sem1\\FLCD\\lab\\project\\FLCD-lab\\FAData\\FAIdentifier.in");
+        return finiteAutomata.isAccepted(token);
+        //return token.matches("^[a-zA-Z]([a-zA-Z]|[0-9])*$");
     }
 
     private boolean isConstant(String token){
-        return token.matches("\"[a-zA-Z0-9]*\"|'[a-zA-Z0-9]'|[0-9]|[1-9][0-9]*|\\+[0-9]|[1-9][0-9]]|-[0-9]|[1-9][0-9]|\\+[1-9]|-[1-9]]");
+        FiniteAutomata finiteAutomata = new FiniteAutomata("D:\\Stuff\\faculta\\anu3-sem1\\FLCD\\lab\\project\\FLCD-lab\\FAData\\FAConstant.in");
+        return finiteAutomata.isAccepted(token);
+//        return token.matches("\"[a-zA-Z0-9]*\"|'[a-zA-Z0-9]'|[0-9]|[1-9][0-9]*|\\+[0-9]|[1-9][0-9]]|-[0-9]|[1-9][0-9]|\\+[1-9]|-[1-9]]");
     }
 
     @Override

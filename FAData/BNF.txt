@@ -1,0 +1,15 @@
+<file> = <states-set> <alphabet> <initial_state> <final_states> <transitions>
+
+<states_set> = <state> | <state>,<states_set>
+<state> = p | q | r | s | t ...
+
+<alphabet> = <symbol> | <symbol>,<alphabet>
+<symbol> = 0| 1 | 2 | 3 | ... | 9 | a | b | c | ... 
+
+<initial_state> = <state>
+
+<final_states> = <state> | <state>,<final_states>
+
+<transitions> = <transition> | <transition><transitions>
+<transition> = <state>,<symbol>=<state>
+
